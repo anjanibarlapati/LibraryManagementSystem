@@ -1,0 +1,103 @@
+npm init -y --> pacakge.json
+npm install sequelize --> node_modules+ pacakge-lock.json
+npm install --save pg pg-hstore
+tsc --init --> tsconfig.json
+npm install -g ts-node 
+npm install nodemon
+npm install dotenv --> to load environment variables from your .env file
+npm install express
+npm i --save-dev @types/express
+
+DROP TABLE "Returns";
+DROP TABLE "Loans";
+UPDATE "Reservations" SET "status"= 'Active' WHERE "id"=1;
+UPDATE "Books" SET "numberOfCopies"=2 WHERE "id"=8;
+UPDATE "Books" SET "authorId"=2 WHERE "id"=2;
+
+
+DROP TABLE "Returns";
+DROP TABLE "Loans";
+DROP TABLE "Reservations";
+DROP TABLE "Members";
+DROP TABLE "Books";
+DROP TABLE "Authors";
+
+SELECT "Authors"."id", "Authors"."name", "Authors"."birth_year", "Authors"."nationality", COUNT("Books"."id") AS "book_count" FROM "Authors" AS "Authors" LEFT OUTER JOIN "Books" AS "books" ON "Authors"."id" = "books"."authorId" GROUP BY "Authors"."id";
+
+SELECT 
+    "Authors"."id", 
+    "Authors"."name", 
+    "Authors"."birth_year", 
+    "Authors"."nationality", 
+    COUNT("Books"."id") AS "book_count" 
+FROM 
+    "Authors" 
+LEFT OUTER JOIN 
+    "Books" 
+ON 
+    "Authors"."id" = "Books"."authorId" 
+GROUP BY 
+    "Authors"."id";
+
+    SELECT "Authors"."id", "Authors"."name", COUNT("books"."id") AS "Books_Count" FROM "Authors" AS "Authors" LEFT OUTER JOIN "Books" AS "books" ON "Authors"."id" = "books"."authorId" GROUP BY "Authors"."id" ORDER BY "Books_Count" DESc LIMIT 1;
+
+const authorsData: any = [
+            { name: 'Arundathi Roy', birth_year: 1961, nationality: 'Indian'}, 
+            {name: 'A.P.J Abdul Kalam', birth_year: 1931, nationality: 'Indian'},
+            {name: 'Gandhi', birth_year: 1869, nationality: 'Indian'}, 
+            {name: 'Chethan Bhagat', birth_year: 1974, nationality: 'Indian'},
+            {name: 'Samuel Beckett', birth_year: 1906, nationality: 'Irish'},
+            {name: 'R.K. Narayan', birth_year: 1906, nationality: 'Indian'},
+            {name: 'William Shakespeare', birth_year: 1560, nationality: 'English'}
+];
+
+{"name": "Zoe", "birth_year": 1234, "nationality": "Vietnamese"}
+{"name": "Zoe", "birth_year": 1345, "nationality": "British"}
+
+{"birth_year": 1564, "nationality": "British"}
+
+const membersData = [
+      { name: 'Anjani', address: 'Nandipet', phone_number: '8639523822', email: 'anjanibarlapati@gmail.com'}, 
+      { name: 'Riya', address: 'Banglore', phone_number: '8639523823', email: 'riya@gmail.com'}, 
+      { name: 'Diya', address: 'Hyderabad', phone_number: '8639523824', email: 'diya@gmail.com'}, 
+      { name: 'Zoya', address: 'Banglore', phone_number: '8639523825', email: 'zoya@gmail.com'}, 
+      { name: 'Siya', address: 'Hyderabad', phone_number: '8639523826', email: 'siya@gmail.com'}
+]; 
+
+const booksData = [
+            { title: 'The God of Small Things', authorId: 1, genre: 'Fiction', isbn: '9780679457312', publication_year: 1997 , numberOfCopies: 10},
+            { title: 'Wings of Fire', authorId: 2, genre: 'Autobiography', isbn: '9788173711466', publication_year: 1999, numberOfCopies: 8 },
+            { title: 'My Experiments With Truth', authorId: 3, genre: 'Autobiography', isbn: '9788172296023', publication_year: 1927, numberOfCopies: 20 },
+            { title: 'The Cost of Living', authorId: 1, genre: 'Non-fiction', isbn: '0-375-75614-0', publication_year: 1999, numberOfCopies: 13 },
+            { title: 'The End of Imagination', authorId: 1, genre: 'Essays', isbn: '81-7130-867-8', publication_year: 1998, numberOfCopies: 15 },
+            { title: 'Ignited Minds: Unleashing the Power Within India', authorId: 2, genre: 'Non-fiction', isbn: '0-670-04928-X', publication_year: 2002, numberOfCopies: 5},
+            { title: 'Five Point Someone', authorId: 4, genre: 'Fiction', isbn: '81-291-0459-8', publication_year: 2004, numberOfCopies: 7 },
+            { title: '2 States', authorId: 4, genre: 'Fiction', isbn: '9788129115300', publication_year: 2009, numberOfCopies: 2 }
+];
+
+const reservationsData: any = [
+            { book_id: 8, member_id: 5, reservation_date: new Date().toISOString(), status: "Active" },
+            { book_id: 3, member_id: 1, reservation_date: new Date('2024-07-12').toISOString(), status: "Active"  },
+            { book_id: 5, member_id: 4, reservation_date: new Date('2024-07-15').toISOString(), status: "Active"  }
+];
+
+const loansData = [
+            { reservation_id: 1, loan_date: new Date('2024-07-01').toISOString(), status: "Active" },
+            { reservation_id: 1, loan_date:  new Date().setDate(new Date().getDate() + 30).toISOString(), status: "Active" },
+            { reservation_id: 2, loan_date: new Date('2024-09-26').toISOString(), status: "Active" },
+            { reservation_id: 3, loan_date: new Date('2024-10-24').toISOString(), status: "Active" }
+];
+
+const returnData = [
+    {loan_id: 1, return_date:  new Date().setDate(new Date().getDate() + 20).toISOString() };
+];
+
+{
+  "reservation_id": 1,
+  "loan_date": "2024-07-12T10:00:00.000Z",
+  "status": "Active"
+}
+
+{ "loan_id": 1, 
+"return_date": "2024-08-12T10:00:00.000Z" 
+}
